@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InstructorMenuActivity">
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome "
+        android:layout_gravity="center_horizontal"
+        android:padding="30dp"
+        android:textSize="40sp"
+        android:textStyle="bold"/>
+    
+    <GridLayout
+        android:id="@+id/subjectsGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/welcomeText"
+        android:layout_marginTop="50dp"
+        android:columnCount="2"
+        android:useDefaultMargins="true"
+        android:alignmentMode="alignMargins"
+        android:foregroundGravity="center_horizontal"
+        >
+
+        <Button
+            android:id="@+id/biologyButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Biology"
+            android:ellipsize="end"/>
+
+        <Button
+            android:id="@+id/calculusButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calculus"
+            android:ellipsize="end"/>
+
+        <Button
+            android:id="@+id/mobileApplication"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mobile Application"
+            android:ellipsize="end"/>
+
+        <Button
+            android:id="@+id/programmingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Programming"
+            android:ellipsize="end"/>
+
+    </GridLayout>
+
+</RelativeLayout>
