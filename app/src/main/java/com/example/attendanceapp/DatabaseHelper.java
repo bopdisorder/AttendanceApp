@@ -20,6 +20,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(Metadata.SQL_CREATE_STUDENTS_TABLE);
         db.execSQL(Metadata.SQL_CREATE_COURSES_TABLE);
         db.execSQL(Metadata.SQL_CREATE_ATTENDANCE_TABLE);
+        db.execSQL(Metadata.SQL_CREATE_INSTRUCTOR_COURSE_TABLE);
+        db.execSQL(Metadata.SQL_CREATE_STUDENT_COURSE_TABLE);
     }
 
     @Override
@@ -30,6 +32,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(Metadata.DELETE_STUDENTS_TABLE);
         db.execSQL(Metadata.DELETE_COURSES_TABLE);
         db.execSQL(Metadata.DELETE_ATTENDANCE_TABLE);
+        db.execSQL(Metadata.DELETE_INSTRUCTOR_COURSE_TABLE);
+        db.execSQL(Metadata.DELETE_STUDENT_COURSE_TABLE);
         onCreate(db);
     }
 

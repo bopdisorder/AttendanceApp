@@ -16,6 +16,11 @@ public class InstructorMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor_menu);
 
+        Intent receiveId = getIntent();
+        String id = receiveId.getStringExtra("user_id");
+
+
+
         biologyButton = findViewById(R.id.biologyButton);
 
         biologyButton.setOnClickListener(new View.OnClickListener() {
