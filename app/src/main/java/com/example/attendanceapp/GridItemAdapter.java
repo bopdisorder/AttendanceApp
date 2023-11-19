@@ -43,7 +43,6 @@ public class GridItemAdapter extends ArrayAdapter<GridItem> {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context.getApplicationContext(), "Course opened: ", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, AttendanceSignalActivity.class);
                 intent.putExtra("course_id", currentItem.getCourseId());
                 intent.putExtra("course_name", currentItem.getCourseName());

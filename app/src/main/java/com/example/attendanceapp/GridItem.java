@@ -1,7 +1,5 @@
 package com.example.attendanceapp;
 
-import android.widget.Button;
-
 public class GridItem {
     private String courseName;
     private int courseId;

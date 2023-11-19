@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 public class AttendanceSignalActivity extends AppCompatActivity {
 
     private ImageView signalGIF;
+    private Button receiveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +25,15 @@ public class AttendanceSignalActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), "Id: " + receiveId + "\nName: " + receiveName, Toast.LENGTH_SHORT).show();
 
-    signalGIF = findViewById(R.id.signalGIF);
+        signalGIF = findViewById(R.id.signalGIF);
 
-
-
-        //Upon receiving signals go the next activity
+        receiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), AttendanceListActivity.class);
+                startActivity(intent);
+                //Send the list of students that attended with the intent
+            }
+        });
     }
 }
