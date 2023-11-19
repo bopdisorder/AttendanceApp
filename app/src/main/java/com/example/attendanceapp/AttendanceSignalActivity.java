@@ -2,8 +2,10 @@ package com.example.attendanceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class AttendanceSignalActivity extends AppCompatActivity {
 
@@ -14,8 +16,16 @@ public class AttendanceSignalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_attendance_signal);
 
-        signalGIF = findViewById(R.id.signalGIF);
+        Intent recieveIntent = getIntent();
+        int receiveId = recieveIntent.getIntExtra("course_id", 100);
+        String receiveName = recieveIntent.getStringExtra("course_name");
 
-        //Upon receiving at least one signal from a student go the next activity
+        Toast.makeText(getApplicationContext(), "Id: " + receiveId + "\nName: " + receiveName, Toast.LENGTH_SHORT).show();
+
+    signalGIF = findViewById(R.id.signalGIF);
+
+
+
+        //Upon receiving signals go the next activity
     }
 }

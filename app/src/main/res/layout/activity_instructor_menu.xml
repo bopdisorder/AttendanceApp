@@ -15,47 +15,18 @@
         android:padding="30dp"
         android:textSize="40sp"
         android:textStyle="bold"/>
-    
-    <GridLayout
-        android:id="@+id/subjectsGrid"
+
+    <GridView
+        android:id="@+id/InstructorGridView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/welcomeText"
-        android:layout_marginTop="50dp"
-        android:columnCount="2"
-        android:useDefaultMargins="true"
-        android:alignmentMode="alignMargins"
-        android:foregroundGravity="center_horizontal"
-        >
+        android:layout_below="@+id/welcomeText"
+        android:numColumns="2"
+        android:columnWidth="120dp"
+        android:stretchMode="columnWidth"
+        android:gravity="center"
+        android:padding="16dp">
 
-        <Button
-            android:id="@+id/biologyButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Biology"
-            android:ellipsize="end"/>
-
-        <Button
-            android:id="@+id/calculusButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Calculus"
-            android:ellipsize="end"/>
-
-        <Button
-            android:id="@+id/mobileApplication"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mobile Application"
-            android:ellipsize="end"/>
-
-        <Button
-            android:id="@+id/programmingButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Programming"
-            android:ellipsize="end"/>
-
-    </GridLayout>
+    </GridView>
 
 </RelativeLayout>

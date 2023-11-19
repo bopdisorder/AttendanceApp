@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
         {
             //Insert courses, instructors and students as well as all their details
             long courseId1 = databaseOperations.insertCourse(1, "Biology 1", "MW 09:30");
-            long courseId2 = databaseOperations.insertCourse(3, "Chemistry 1", "MW 11:00");
             long courseId3 = databaseOperations.insertCourse(2, "Physics 1", "MW 12:30");
+            long courseId2 = databaseOperations.insertCourse(3, "Chemistry 1", "MW 11:00");
             long courseId4 = databaseOperations.insertCourse(4, "Programming 1", "TT 09:30");
             long courseId5 = databaseOperations.insertCourse(5, "Mobile Application", "TT 11:00");
             long courseId6 = databaseOperations.insertCourse(6, "Software Engineering", "TT 12:30");

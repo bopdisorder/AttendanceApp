@@ -126,28 +126,23 @@ public class DatabaseOperations {
         return instructorExists;
     }
 
-    public Cursor getCourseIdsForInstructor(int instructorId) {
+
+    public Cursor getCourseDetailsForInstructor(int instructorId) {
         String query = "SELECT " +
-                Metadata.INSTRUCTOR_COURSE_TABLE + "." + Metadata.COLUMN_COURSE_ID +
+                Metadata.COURSES_TABLE + "." + Metadata.COLUMN_COURSE_NAME + ", " +
+                Metadata.COURSES_TABLE + "." + Metadata.COLUMN_COURSE_ID +
                 " FROM " +
+                Metadata.COURSES_TABLE +
+                " JOIN " +
                 Metadata.INSTRUCTOR_COURSE_TABLE +
+                " ON " +
+                Metadata.COURSES_TABLE + "." + Metadata.COLUMN_COURSE_ID +
+                " = " +
+                Metadata.INSTRUCTOR_COURSE_TABLE + "." + Metadata.COLUMN_COURSE_ID +
                 " WHERE " +
                 Metadata.INSTRUCTOR_COURSE_TABLE + "." + Metadata.COLUMN_INSTRUCTOR_ID +
                 " = ?";
         String[] selectionArgs = {String.valueOf(instructorId)};
-
-        return database.rawQuery(query, selectionArgs);
-    }
-
-    public Cursor getCourseIdsForStudent(int studentId) {
-        String query = "SELECT " +
-                Metadata.STUDENT_COURSE_TABLE + "." + Metadata.COLUMN_COURSE_ID +
-                " FROM " +
-                Metadata.STUDENT_COURSE_TABLE +
-                " WHERE " +
-                Metadata.STUDENT_COURSE_TABLE + "." + Metadata.COLUMN_STUDENT_ID +
-                " = ?";
-        String[] selectionArgs = {String.valueOf(studentId)};
 
         return database.rawQuery(query, selectionArgs);
     }
