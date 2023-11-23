@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ public class InstructorMenuActivity extends AppCompatActivity {
     private GridView gridView;
     private DatabaseOperations databaseOperations;
     private ArrayList<GridItem> gridItemsList = new ArrayList<>();
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,9 @@ public class InstructorMenuActivity extends AppCompatActivity {
         int id = Integer.valueOf(idString);
 
         gridView = findViewById(R.id.InstructorGridView);
+        textView = findViewById(R.id.welcomeText);
+        String instructorName = databaseOperations.getInstructorName(id);
+        textView.setText("Welcome " + instructorName);
 
         Cursor cursor = databaseOperations.getCourseDetailsForInstructor(id);
         int courseIdIndex = cursor.getColumnIndexOrThrow(Metadata.COLUMN_COURSE_ID);
@@ -38,7 +43,7 @@ public class InstructorMenuActivity extends AppCompatActivity {
         Log.d("course names: ", String.valueOf(courseNameIndex));
 
         if(courseNameIndex != -1){
-            while (cursor.moveToNext())
+            while (cursor.moveToNext()) //An alternative is !cursor.isAfterLast() with moveToNext() inside the while loop
             {
                 int courseId = cursor.getInt(courseIdIndex);
 

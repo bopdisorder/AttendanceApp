@@ -126,6 +126,58 @@ public class DatabaseOperations {
         return instructorExists;
     }
 
+    public String getInstructorName(int id ) {
+        String selection = Metadata.COLUMN_ID + " LIKE ?";
+        // Specify arguments in placeholder order.
+        String[] selectionArgs = { String.valueOf(id) };
+        Cursor cursor = database.query(
+                Metadata.INSTRUCTORS_TABLE,   // The table to query
+                null,             // The array of columns to return (pass null to get all)
+                null,              // The columns for the WHERE clause
+                null,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+
+        String instructorName = "";
+
+        if (cursor.moveToFirst()) {
+            instructorName = cursor.getString(cursor.getColumnIndexOrThrow(Metadata.COLUMN_NAME));
+        }
+
+        cursor.close();
+
+        return instructorName;
+    }
+
+    public String getStudentName(String id ) {
+
+        String selection = Metadata.COLUMN_ID + " LIKE ?";
+        // Specify arguments in placeholder order.
+        String[] selectionArgs = { id };
+        Cursor cursor = database.query(
+                Metadata.STUDENTS_TABLE,   // The table to query
+                null,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+
+        String studentsName = "";
+
+        if (cursor.moveToFirst()) {
+            studentsName = cursor.getString(cursor.getColumnIndexOrThrow(Metadata.COLUMN_NAME));
+        }
+
+        cursor.close();
+
+        return studentsName;
+    }
+
+
 
     public Cursor getCourseDetailsForInstructor(int instructorId) {
         String query = "SELECT " +
@@ -143,6 +195,26 @@ public class DatabaseOperations {
                 Metadata.INSTRUCTOR_COURSE_TABLE + "." + Metadata.COLUMN_INSTRUCTOR_ID +
                 " = ?";
         String[] selectionArgs = {String.valueOf(instructorId)};
+
+        return database.rawQuery(query, selectionArgs);
+    }
+
+    public Cursor getStudentsForCourse(int courseId) {
+        String query = "SELECT " +
+                Metadata.STUDENTS_TABLE + "." + Metadata.COLUMN_NAME + ", " +
+                Metadata.COURSES_TABLE + "." + Metadata.COLUMN_ID +
+                " FROM " +
+                Metadata.STUDENTS_TABLE +
+                " JOIN " +
+                Metadata.STUDENT_COURSE_TABLE +
+                " ON " +
+                Metadata.STUDENTS_TABLE + "." + Metadata.COLUMN_ID +
+                " = " +
+                Metadata.STUDENT_COURSE_TABLE + "." + Metadata.COLUMN_COURSE_ID +
+                " WHERE " +
+                Metadata.STUDENT_COURSE_TABLE + "." + Metadata.COLUMN_INSTRUCTOR_ID +
+                " = ?";
+        String[] selectionArgs = {String.valueOf(courseId)};
 
         return database.rawQuery(query, selectionArgs);
     }

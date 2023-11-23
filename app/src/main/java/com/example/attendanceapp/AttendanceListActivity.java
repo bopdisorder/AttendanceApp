@@ -3,6 +3,7 @@ package com.example.attendanceapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ListView;
 
@@ -28,6 +29,10 @@ public class AttendanceListActivity extends AppCompatActivity {
         Date date = calendar.getTime();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
         String formattedDateTime = dateFormat.format(date);
+
+        //Get Array of strings from previous activity of students that attended
+        Intent receiveIntent = getIntent();
+        String[] attendingStudents = receiveIntent.getStringArrayExtra("");
 
         listView = findViewById(R.id.listView);
 
